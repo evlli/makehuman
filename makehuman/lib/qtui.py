@@ -461,10 +461,13 @@ class Frame(QtWidgets.QMainWindow):
         self.create()
 
     def panel(self):
+        print(">panel")
         widget = QtWidgets.QWidget()
         widget.setAttribute(QtCore.Qt.WA_OpaquePaintEvent, False)
         widget.setAutoFillBackground(True)
         widget.setContentsMargins(0, 0, 0, 0)
+        widget.setParent(self.central)
+        print("<panel")
         return widget
 
     def create(self):
@@ -478,7 +481,7 @@ class Frame(QtWidgets.QMainWindow):
 
         self.tab_layout = QtWidgets.QGridLayout(self.tab_panel)
         self.tab_layout.setContentsMargins(0, 0, 0, 0)
-        self.tabs = qtgui.Tabs()
+        self.tabs = qtgui.Tabs(self.tab_panel)
         self.tab_layout.addWidget(self.tabs)
 
         self.h_layout = QtWidgets.QGridLayout()

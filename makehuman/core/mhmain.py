@@ -828,7 +828,7 @@ class MHApplication(gui3d.Application, mh.Application):
             self.mainwin.restoreGeometry(geometry)
         else:
             self.mainwin.restoreGeometry(mainwinGeometry)
-
+        
         self._processCommandlineArgs(beforeLoaded = False)
 
     def _processCommandlineArgs(self, beforeLoaded):

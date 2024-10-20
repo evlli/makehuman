@@ -404,15 +404,15 @@ class Application(events3d.EventHandler):
         :return: The view, for convenience.
         :rvalue: gui3d.View
         """
+        print("> addView")
         if view.parent:
             raise RuntimeError('The view is already attached')
-
         view._parent = weakref.ref(self)
         view._updateVisibility()
         view._attach()
 
         self.children.append(view)
-
+        print("< addView")
         return view
 
     def removeView(self, view):
@@ -422,6 +422,7 @@ class Application(events3d.EventHandler):
         :param view: The view to be removed.
         :type view: gui3d.View
         """
+        print("> removeView")
         if view not in self.children:
             raise RuntimeError('The view is not a child of this view')
 
@@ -429,7 +430,7 @@ class Application(events3d.EventHandler):
         view._detach()
 
         self.children.remove(view)
-
+        print("< removeView")
     def isVisible(self):
         return True
 
